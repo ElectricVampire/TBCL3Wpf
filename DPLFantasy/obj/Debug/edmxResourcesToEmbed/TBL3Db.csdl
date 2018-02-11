@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TBCL3FantasyLeagueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DreamTeamPlayer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Team_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Points" Type="Int32" Nullable="false" />
+    <Property Name="IsGirlplayer" Type="Boolean" />
+    <Property Name="runsScored" Type="Int32" Nullable="false" />
+    <Property Name="noOfFours" Type="Int32" Nullable="false" />
+    <Property Name="noOfSixes" Type="Int32" Nullable="false" />
+    <Property Name="noOfwickets" Type="Int32" Nullable="false" />
+    <Property Name="maidenOver" Type="Int32" Nullable="false" />
+    <Property Name="noOfCatches" Type="Int32" Nullable="false" />
+    <Property Name="stumping" Type="Int32" Nullable="false" />
+    <Property Name="runoutThrow" Type="Int32" Nullable="false" />
+    <Property Name="runoutCatch" Type="Int32" Nullable="false" />
+    <Property Name="duck" Type="Int32" Nullable="false" />
+    <Property Name="bonusOnRunsScore" Type="Int32" Nullable="false" />
+    <Property Name="bonusOnWickets" Type="Int32" Nullable="false" />
+    <Property Name="totalPoints" Type="Int32" Nullable="false" />
+    <Property Name="DreamTeamId" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="DreamTeam" Relationship="Self.FK_DreamTeamPlayers_DreamTeams" FromRole="DreamTeamPlayers" ToRole="DreamTeams" />
+  </EntityType>
+  <EntityType Name="DreamTeam">
+    <Key>
+      <PropertyRef Name="DreamTeamId" />
+    </Key>
+    <Property Name="DateSubmitted" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Captain" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ViceCaptain" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MoneyPaid" Type="Boolean" Nullable="false" />
+    <Property Name="DreamTeamId" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="DreamTeamPlayers" Relationship="Self.FK_DreamTeamPlayers_DreamTeams" FromRole="DreamTeams" ToRole="DreamTeamPlayers" />
+    <NavigationProperty Name="DreamTeams1" Relationship="Self.FK_DreamTeams_DreamTeams" FromRole="DreamTeams" ToRole="DreamTeams1" />
+    <NavigationProperty Name="DreamTeam1" Relationship="Self.FK_DreamTeams_DreamTeams" FromRole="DreamTeams1" ToRole="DreamTeams" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="Player_Id" />
+    </Key>
+    <Property Name="Player_Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Points" Type="Int32" Nullable="false" />
+    <Property Name="Team_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IsGirlPlayer" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK_DreamTeamPlayers_DreamTeams">
+    <End Role="DreamTeams" Type="Self.DreamTeam" Multiplicity="1" />
+    <End Role="DreamTeamPlayers" Type="Self.DreamTeamPlayer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DreamTeams">
+        <PropertyRef Name="DreamTeamId" />
+      </Principal>
+      <Dependent Role="DreamTeamPlayers">
+        <PropertyRef Name="DreamTeamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DreamTeams_DreamTeams">
+    <End Role="DreamTeams" Type="Self.DreamTeam" Multiplicity="1" />
+    <End Role="DreamTeams1" Type="Self.DreamTeam" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DreamTeams">
+        <PropertyRef Name="DreamTeamId" />
+      </Principal>
+      <Dependent Role="DreamTeams1">
+        <PropertyRef Name="DreamTeamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TBCL3FantasyLeagueEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DreamTeamPlayers" EntityType="Self.DreamTeamPlayer" />
+    <EntitySet Name="DreamTeams" EntityType="Self.DreamTeam" />
+    <EntitySet Name="Players" EntityType="Self.Player" />
+    <AssociationSet Name="FK_DreamTeamPlayers_DreamTeams" Association="Self.FK_DreamTeamPlayers_DreamTeams">
+      <End Role="DreamTeams" EntitySet="DreamTeams" />
+      <End Role="DreamTeamPlayers" EntitySet="DreamTeamPlayers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DreamTeams_DreamTeams" Association="Self.FK_DreamTeams_DreamTeams">
+      <End Role="DreamTeams" EntitySet="DreamTeams" />
+      <End Role="DreamTeams1" EntitySet="DreamTeams" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

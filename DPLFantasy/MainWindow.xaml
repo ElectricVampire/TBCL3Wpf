@@ -1,0 +1,109 @@
+﻿<Window x:Class="DPLFantasy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DPLFantasy"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="671.6" Width="1199">
+
+    <Grid Margin="0,83,-34.2,-197">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="243*"/>
+            <ColumnDefinition Width="487*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="421*"/>
+        </Grid.ColumnDefinitions>
+
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="639" Margin="10,-77,0,0" VerticalAlignment="Top" Width="1179" Grid.ColumnSpan="5">
+            <TabItem Header="Make Team">
+                <Grid Margin="8,53,-23.8,-10.8">
+                    <Grid Background="#FFE5E5E5" Margin="-10,-15,-112,-31" HorizontalAlignment="Left" Width="1181">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="559*"/>
+                            <RowDefinition Height="44*"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                    <DataGrid x:Name="dgFirstTeam" ItemsSource="{Binding FirstDataGridView}" SelectedItem="{Binding SelectedPlayer, Mode=TwoWay}"  MouseDoubleClick="dgPlayerSelected_MouseDoubleClick" AutoGenerateColumns="False" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontWeight="Bold" HorizontalAlignment="Left" Margin="36,52,0,0" VerticalAlignment="Top" Height="230" Width="194">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="3*"/>
+                            <DataGridTextColumn Header="Value" Binding="{Binding Points}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ComboBox x:Name="cbFirstTeam" TextBoxBase.TextChanged="cbFirstTeam_TextChanged"   IsReadOnly="False" IsEditable="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="36,25,0,0" VerticalAlignment="Top" Width="194" RenderTransformOrigin="0.854,0.365" Height="27"/>
+
+                    <DataGrid x:Name="dgSecondTeam" SelectedItem="{Binding SelectedPlayer, Mode=TwoWay}" ItemsSource="{Binding SecondDataGridView}" MouseDoubleClick="dgPlayerSelected_MouseDoubleClick" AutoGenerateColumns="False" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontWeight="Bold" HorizontalAlignment="Left" Margin="726,52,0,0" VerticalAlignment="Top" Height="230" Width="194">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="3*"/>
+                            <DataGridTextColumn Header="Value" Binding="{Binding Points}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ComboBox x:Name="cbSecondTeam"  TextBoxBase.TextChanged="cbSecondTeam_TextChanged"  IsReadOnly="False" IsEditable="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="726,25,0,0" VerticalAlignment="Top" Width="194" RenderTransformOrigin="0.854,0.365" Height="27"/>
+
+                    <DataGrid x:Name="dgThirdTeam" SelectedItem="{Binding SelectedPlayer, Mode=TwoWay}" ItemsSource="{Binding ThirdDataGridView}" MouseDoubleClick="dgPlayerSelected_MouseDoubleClick"  AutoGenerateColumns="False" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontWeight="Bold" HorizontalAlignment="Left" Margin="369,52,0,0" VerticalAlignment="Top" Height="230" Width="194">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="3*"/>
+                            <DataGridTextColumn Header="Value" Binding="{Binding Points}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ComboBox x:Name="cbThirdTeam" TextBoxBase.TextChanged="cbThirdTeam_TextChanged" IsReadOnly="False" IsEditable="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="369,25,0,0" VerticalAlignment="Top" Width="194" RenderTransformOrigin="0.854,0.365" Height="27"/>
+
+                    <DataGrid x:Name="dgDreamTeam"  SelectedItem="{Binding SelectedPlayer, Mode=TwoWay}" ItemsSource="{Binding DreamDataGridView}" MouseDoubleClick="dgDreamTeamRemovePlayers_MouseDoubleClick" AutoGenerateColumns="False" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontWeight="Bold" HorizontalAlignment="Left" Margin="369,320,0,0" VerticalAlignment="Top" Height="230" Width="194">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="3*"/>
+                            <DataGridTextColumn Header="Value" Binding="{Binding Points}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBox x:Name="txtDreamTeam"  Background="AliceBlue" IsEnabled="True"  HorizontalAlignment="Left" Margin="369,-46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194" Height="24"/>
+                    <Label x:Name="labelEnterDream" Content="Your Dream Team Name" FontWeight="DemiBold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,-46,0,0" Width="194"/>
+                    <Label x:Name="labelDreamTeamName" Content="{Binding Text,ElementName=txtDreamTeam,UpdateSourceTrigger=PropertyChanged}" FontWeight="DemiBold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="369,290,0,0" Width="194" RenderTransformOrigin="2.331,-1.625"/>
+                    <Label x:Name="labelTotalPoints" Content="Total Points" FontWeight="Bold"  HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="14.943,9.75" Margin="588,436,0,0" Width="72" Height="32"/>
+                    <TextBox x:Name="txtTotalPoints" Text="{Binding TotalPoints}" IsReadOnly="True" HorizontalAlignment="Left" Height="32" Margin="588,468,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92"/>
+
+                    <Label x:Name="labelTotalSelectedPlayers" Content="Number Of Players" FontWeight="Bold"  HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="14.943,9.75" Margin="807,436,0,0" Width="124" Height="32"/>
+                    <TextBox x:Name="txtTotalSelectedPlayers" Text="{Binding TotalSelectedPlayers}" IsReadOnly="True" HorizontalAlignment="Left" Height="32" Margin="816,468,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92"/>
+
+
+                    <Button x:Name="button" FontWeight="Heavy" Content="Submit"  Click="button_Click_Submit" HorizontalAlignment="Left" Margin="728,524,0,0" VerticalAlignment="Top" Width="105" Height="26"/>
+                    <Label x:Name="labelCaptain" FontWeight="Heavy" Content="Captain Name" HorizontalAlignment="Left" Margin="588,320,0,0" VerticalAlignment="Top" Width="102"/>
+                    <Label x:Name="labelViseCaptain" FontWeight="Heavy" Content="Vise Captain Name" HorizontalAlignment="Left" Margin="588,392,0,0" VerticalAlignment="Top" Width="117"/>
+                    <ComboBox x:Name="cbCaptainName" ItemsSource="{Binding DreamDataGridView}" IsReadOnly="False" IsEditable="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="726,319,0,0" VerticalAlignment="Top" Width="194" RenderTransformOrigin="0.854,0.365" Height="27"/>
+                    <ComboBox x:Name="cbViseCaptainName" ItemsSource="{Binding DreamDataGridView}"  IsReadOnly="False" IsEditable="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="726,392,0,0" VerticalAlignment="Top" Width="194" RenderTransformOrigin="0.854,0.365" Height="27"/>
+                    <Label x:Name="labelTodaysMatch" Content="Today's matches" FontWeight="Bold" HorizontalAlignment="Left" Margin="406,-6,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Statistics">
+                <Grid Margin="-1,14,0.6,-13.6">
+                    <DataGrid x:Name="dgTeamDataViewer" ItemsSource="{Binding DreamTeamPlayersDataView}"  AutoGenerateColumns="False" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontWeight="Bold" HorizontalAlignment="Left" Margin="1,63,0,0" VerticalAlignment="Top" Height="222" Width="1162">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                            <DataGridTextColumn Header="Value" Binding="{Binding Points}" Width="Auto"/>
+                            <DataGridTextColumn Header="FromTeam" Binding="{Binding Team_id}" Width="Auto"/>
+                            <DataGridTextColumn Header="Runs" Binding="{Binding runsScored}" Width="Auto"/>
+                            <DataGridTextColumn Header="Four(s)" Binding="{Binding noOfFours}" Width="Auto"/>
+                            <DataGridTextColumn Header="Six(s)" Binding="{Binding noOfSixes}" Width="Auto"/>
+                            <DataGridTextColumn Header="Wicket(s)" Binding="{Binding noOfwickets}" Width="Auto"/>
+                            <DataGridTextColumn Header="MaidenOver(s)" Binding="{Binding maidenOver}" Width="Auto"/>
+                            <DataGridTextColumn Header="Catches" Binding="{Binding noOfCatches}" Width="Auto"/>
+                            <DataGridTextColumn Header="Stumping" Binding="{Binding stumping}" Width="Auto"/>
+                            <DataGridTextColumn Header="RunOut(Throw)" Binding="{Binding runoutThrow}" Width="Auto"/>
+                            <DataGridTextColumn Header="RunOut(Catch)" Binding="{Binding runoutCatch}" Width="Auto"/>
+                            <DataGridTextColumn Header="Duck" Binding="{Binding duck}" Width="Auto"/>
+                            <DataGridTextColumn Header="Bonus Points(Runs)" Binding="{Binding bonusOnRunsScore}" Width="Auto"/>
+                            <DataGridTextColumn Header="Bonus Points(Wickets)" Binding="{Binding bonusOnWickets}" Width="Auto"/>
+                            <DataGridTextColumn Header="Total Points" Binding="{Binding totalPoints}" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ComboBox x:Name="cbTeamNames" ItemsSource="{Binding DreamTeamsByDate}" SelectedIndex="0" SelectionChanged="cbTeamNames_SelectedIndexChanged" IsReadOnly="False" IsEditable="False" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="504,13,0,0" VerticalAlignment="Top" Width="194" RenderTransformOrigin="0.854,0.365" Height="27"/>
+                    <Label x:Name="labelDate" Content="Select Date" FontWeight="Bold"  HorizontalAlignment="Left" Margin="4,13,0,563" Width="74"/>
+                    <Label x:Name="labelTeamName" Content="Team Name" FontWeight="Bold" HorizontalAlignment="Left" Margin="419,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.25,2.859" Height="30" Width="86"/>
+                    <DatePicker x:Name="dpDreamTeamPlayerData" Margin="88,10,831,564" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+                    <TextBox x:Name="txtTotalScoredPoint" TextWrapping="Wrap" Text="0" TextAlignment="Center" FontWeight="Bold" Margin="959,326,9,251"/>
+                    <Label x:Name="lableTotalScoredPoints" Content="Total Scored Points" FontWeight="Bold"  HorizontalAlignment="Left" Margin="834,326,0,251"/>
+                    <Label x:Name="info" Content="*Select Date and we will populate the Team Name for that date.&#xD;&#xA;  By default drop down is sorted in descending order of amount of points they have" HorizontalAlignment="Left" Margin="714,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.563,-0.305" Height="52" Width="453"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

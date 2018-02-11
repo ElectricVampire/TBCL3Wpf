@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TBCL3FantasyLeagueModelStoreContainer" CdmEntityContainer="TBCL3FantasyLeagueEntities">
+    <EntitySetMapping Name="DreamTeamPlayers">
+      <EntityTypeMapping TypeName="TBCL3FantasyLeagueModel.DreamTeamPlayer">
+        <MappingFragment StoreEntitySet="DreamTeamPlayers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Team_id" ColumnName="Team_id" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="IsGirlplayer" ColumnName="IsGirlplayer" />
+          <ScalarProperty Name="runsScored" ColumnName="runsScored" />
+          <ScalarProperty Name="noOfFours" ColumnName="noOfFours" />
+          <ScalarProperty Name="noOfSixes" ColumnName="noOfSixes" />
+          <ScalarProperty Name="noOfwickets" ColumnName="noOfwickets" />
+          <ScalarProperty Name="maidenOver" ColumnName="maidenOver" />
+          <ScalarProperty Name="noOfCatches" ColumnName="noOfCatches" />
+          <ScalarProperty Name="stumping" ColumnName="stumping" />
+          <ScalarProperty Name="runoutThrow" ColumnName="runoutThrow" />
+          <ScalarProperty Name="runoutCatch" ColumnName="runoutCatch" />
+          <ScalarProperty Name="duck" ColumnName="duck" />
+          <ScalarProperty Name="bonusOnRunsScore" ColumnName="bonusOnRunsScore" />
+          <ScalarProperty Name="bonusOnWickets" ColumnName="bonusOnWickets" />
+          <ScalarProperty Name="totalPoints" ColumnName="totalPoints" />
+          <ScalarProperty Name="DreamTeamId" ColumnName="DreamTeamId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DreamTeams">
+      <EntityTypeMapping TypeName="TBCL3FantasyLeagueModel.DreamTeam">
+        <MappingFragment StoreEntitySet="DreamTeams">
+          <ScalarProperty Name="DateSubmitted" ColumnName="DateSubmitted" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="Captain" ColumnName="Captain" />
+          <ScalarProperty Name="ViceCaptain" ColumnName="ViceCaptain" />
+          <ScalarProperty Name="MoneyPaid" ColumnName="MoneyPaid" />
+          <ScalarProperty Name="DreamTeamId" ColumnName="DreamTeamId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="TBCL3FantasyLeagueModel.Player">
+        <MappingFragment StoreEntitySet="Players">
+          <ScalarProperty Name="Player_Id" ColumnName="Player_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="Team_Id" ColumnName="Team_Id" />
+          <ScalarProperty Name="IsGirlPlayer" ColumnName="IsGirlPlayer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

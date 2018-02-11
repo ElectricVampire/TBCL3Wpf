@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TBCL3FantasyLeagueModelStoreContainer" CdmEntityContainer="TBCL3FantasyLeagueEntities">
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="TBCL3FantasyLeagueModel.Player">
+        <MappingFragment StoreEntitySet="Players">
+          <ScalarProperty Name="Player_Id" ColumnName="Player_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="Team_Id" ColumnName="Team_Id" />
+          <ScalarProperty Name="IsGirlPlayer" ColumnName="IsGirlPlayer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
